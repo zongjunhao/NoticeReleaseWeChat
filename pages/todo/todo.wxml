@@ -1,0 +1,34 @@
+<view class="top">
+  <view class="query_info">
+    <picker bindchange="bindLevelChange" value="{{levelIndex}}" range="{{levelArray}}">
+      <view class="picker">
+        级别:{{levelArray[levelIndex]}}<text class="arrow" decode="true">&lt;</text>
+      </view>
+    </picker>
+    <picker bindchange="bindFinishChange" value="{{finishIndex}}" range="{{finishArray}}">
+      <view class="picker">
+        完成度:{{finishArray[finishIndex]}}<text class="arrow" decode="true">&lt;</text>
+      </view>
+    </picker>
+    <button bindtap="query" size="mini" plain="true">查询</button>
+  </view>
+  <button class="add_todo" bindtap="add_todo" size="mini" plain="true" type="primary">新增</button>
+</view>
+<view class="head">
+  <view class="title">待办信息：</view>
+  <view class="tips">
+    <view class="tip level0">完成</view>
+    <view class="tip level3">一般</view>
+    <view class="tip level2">重要</view>
+    <view class="tip level1">紧急</view>
+  </view>
+</view>
+<view class="card">
+  <view class="card-body" wx:for="{{response.data}}" wx:for-item="todo" wx:key="todoId">
+    <view class="notice-card level{{todo.todoLevel}} {{todo.todoIsFinished === 1 ? 'level0' : ''}}">
+      <view class="todo_title">{{ todo.todoTitle }}</view>
+      <view class="todo_content">{{ todo.todoContent }}</view>
+      <view class="phone">截止时间：{{ todo.todoEndtime }}</view>
+    </view>
+  </view>
+</view>

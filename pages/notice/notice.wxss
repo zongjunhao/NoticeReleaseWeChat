@@ -1,0 +1,148 @@
+/* pages/todo/todo.wxss */
+.head_title {
+  font-size: 40rpx;
+}
+
+.top,
+.head {
+  display: flex;
+  justify-content: space-between;
+  padding: 10rpx;
+  align-items: center;
+}
+
+.top {
+  background: white;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, .24);
+}
+
+.head {
+  padding: 20rpx 10rpx;
+}
+
+.query_info {
+  display: flex;
+}
+
+.arrow {
+  font-weight: bolder;
+  color: #a0a0a0;
+}
+
+picker {
+  height: 50rpx;
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  margin: 5rpx;
+  margin-right: 10rpx;
+  padding: 5rpx 15rpx 5rpx 10rpx;
+  border-radius: .25rem;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, .12), 0 2rpx 6rpx rgba(0, 0, 0, .24);
+}
+
+.tips {
+  display: flex;
+}
+
+.tip {
+  background: white;
+  margin: 5rpx;
+  padding: 5rpx 15rpx 5rpx 10rpx;
+  border-radius: .25rem;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, .12), 0 2rpx 6rpx rgba(0, 0, 0, .24);
+  border-left: 7rpx solid #00AAFF;
+  display: flex;
+  align-items: center;
+}
+
+button {
+  margin: 0rpx;
+}
+
+.notice-card {
+  border-radius: .25rem;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, .12), 0 2rpx 6rpx rgba(0, 0, 0, .24);
+  border-left: 10rpx solid #00AAFF;
+  background-color: #fff;
+  padding: 10rpx;
+  box-sizing: border-box;
+  margin: 10rpx;
+}
+
+
+
+.level1 {
+  border-left-color: #FF0000;
+}
+
+.level2 {
+  border-left-color: #FFED00;
+}
+
+.level3 {
+  border-left-color: #00AAFF;
+}
+
+.level0 {
+  border-left-color: #1AAD19;
+}
+
+.labels {
+  display: flex;
+}
+
+.label {
+  display: flex;
+  align-items: flex-start;
+  padding: .2em .6em .3em .2em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  color: #6d6d6d;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+  border: 1rpx solid #6d6d6d;
+  margin-right: 4rpx;
+}
+
+.tag {
+  width: 25rpx;
+  height: 25rpx;
+}
+
+.title {
+  font-size: 1.05em;
+  font-weight: normal;
+  color: #000000;
+  margin-bottom: 20rpx;
+}
+
+.card_bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content {
+  color: #474747cb;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  white-space: normal;
+  font-size: 0.7em;
+  margin-top: 5px;
+  font-size: 0.8em;
+  margin: 10rpx 0;
+}
+
+.endtime {
+  font-size: 0.8em;
+}
+
+page {
+  background: #F8F8F8;
+}

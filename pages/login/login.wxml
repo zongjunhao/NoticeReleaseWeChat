@@ -1,0 +1,21 @@
+<view class="logo">
+  <image class="school_logo" src='/images/school_logo.png'></image>
+  <image class="school_name" src="/images/school_name.png"></image>
+  <text>校园通知发布与待办管理系统</text>
+</view>
+
+<view class="form">
+  <view class="row-group">
+    <text>学工号</text>
+    <input placeholder="请填写学工号" placeholder-class='txt' maxlength='12' bindinput="getAccount"/>
+  </view>
+
+  <view class="row-group">
+    <text>密码</text>
+    <input placeholder="请填写密码" placeholder-class='txt' password="true" maxlength='40' bindinput="getPassword"/>
+  </view>
+
+  <view>
+    <button class="submit"  open-type="getUserInfo" bindgetuserinfo="onClickSubmit" bindtap="login">登录</button>
+  </view>
+</view>

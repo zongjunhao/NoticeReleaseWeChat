@@ -1,0 +1,58 @@
+/* pages/notice_detail/notice_detail.wxss */
+.title{
+  font-size: 1.3em;
+  font-weight: bold;
+  text-align: center;
+  margin:0 1em;
+}
+
+.sub-title{
+  display: flex;
+  justify-content: center;
+  font-size: 0.8em;
+  color: lightgray;
+  text-align: center;
+  margin: 1em;
+}
+.space{
+  width: 20rpx;
+}
+.passage{
+  margin: 1em;
+}
+
+.text{
+  text-indent: 2em;
+  margin: 0.3em 0;
+}
+
+.file_view{
+  margin: 1em;
+  display: flex;
+}
+
+.file_tag{
+  font-size: 0.9em;
+  width: 130rpx;
+}
+.file{
+  color: #0000EE;
+  font-size: 0.9em;
+  margin-bottom: 10rpx;
+}
+
+.file_icon{
+  width: 25rpx;
+  height: 25rpx;
+}
+
+button{
+  margin: 0;
+}
+
+.bottom{
+  margin: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

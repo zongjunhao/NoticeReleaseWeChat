@@ -1,0 +1,39 @@
+// /page/tools.wxs
+
+var foo = "'hello world' from tools.wxs";
+var bar = function (d) {
+  return d;
+}
+
+var getTypePic = function (file) {
+  var filename = file;
+  var index1 = filename.lastIndexOf(".");
+  var index2 = filename.length;
+  var type = filename.substring(index1 + 1, index2);
+  var pic = ""
+  switch (type) {
+    case "doc":
+    case "docx":
+      pic = "WORD.png"
+      break
+    case "xls":
+    case "xlsx":
+      pic = "ECEL.png"
+      break
+    case "ppt":
+    case "pptx":
+      pic = "PPT.png"
+      break
+    default:
+      pic = type.toUpperCase() + ".png"
+      break
+  }
+  return pic;
+}
+
+module.exports = {
+  FOO: foo,
+  bar: bar,
+  getTypePic: getTypePic
+};
+module.exports.msg = "some msg";

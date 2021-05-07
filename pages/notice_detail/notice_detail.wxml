@@ -1,0 +1,33 @@
+<!--pages/notice_detail/notice_detail.wxml-->
+<!-- <wxs src="./../../wxs/util.wxs" module="tools" /> -->
+
+<wxs src="./../tools.wxs" module="tools" />
+
+<view class="title">{{response.notice.noticeTitle}}</view>
+<view class="sub-title">
+  {{response.notice.noticeAddtime}}<view class="space"></view>来源：{{response.unitName}}</view>
+<view style="{{style}}">
+
+</view>
+<view class="passage">
+  <text class="text" space="nbsp">
+    {{response.notice.noticeContent}}
+  </text>
+</view>
+
+<view class="file_view">
+  <view class="file_tag">附件：</view>
+  <view class="files">
+    <view class="file" wx:for="{{response.files}}" wx:for-item="file" wx:key="fileId" bindtap="showFile" data-path="{{file.filePath}}">
+      <image src="/images/file/{{tools.getTypePic(file.fileName)}}" class="file_icon"></image>
+      {{file.fileName}}
+    </view>
+  </view>
+</view>
+
+<view class="bottom">
+  <view>截止日期：{{response.notice.noticeEndtime}}</view>
+  <button class="finish" size="mini" plain="true" disabled="{{response.isFinished === 1}}">
+    {{response.isFinished === 0 ? '' : '已'}}完成
+  </button>
+</view>

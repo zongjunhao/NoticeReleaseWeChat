@@ -1,0 +1,39 @@
+<view class="top">
+  <picker bindchange="bindLevelChange" value="{{levelIndex}}" range="{{levelArray}}">
+    <view class="picker">
+      级别:{{levelArray[levelIndex]}}<text class="arrow" decode="true">&lt;</text>
+    </view>
+  </picker>
+  <picker bindchange="bindFinishChange" value="{{finishIndex}}" range="{{finishArray}}">
+    <view class="picker">
+      完成度:{{finishArray[finishIndex]}}<text class="arrow" decode="true">&lt;</text>
+    </view>
+  </picker>
+  <button bindtap="query" size="mini" plain="true">查询</button>
+</view>
+<view class="head">
+  <view class="head_title">通知信息：</view>
+  <view class="tips">
+    <view class="tip level0">完成</view>
+    <view class="tip level3">一般</view>
+    <view class="tip level2">重要</view>
+    <view class="tip level1">紧急</view>
+  </view>
+</view>
+<view class="card">
+  <view class="card-body" wx:for="{{response.data}}" wx:for-item="notice_data" wx:key="notice">
+    <view class="notice-card level{{notice_data.notice.noticeLevel}} {{notice.noticeIsFinished === 1 ? 'level0' : ''}}"  bindtap="readNotice" data-id="{{notice_data.notice.noticeId}}">
+      <view class="title">{{ notice_data.notice.noticeTitle }}</view>
+      <view class="content">{{ notice_data.notice.noticeContent }}</view>
+      <view class="card_bottom">
+        <view class="labels">
+          <view class="label" wx:for="{{notice_data.labels}}" wx:for-item="label">
+            <image class="tag" src="/images/tag.png"></image>
+            <view class="label_text">{{label}}</view>
+          </view>
+        </view>
+        <view class="endtime">截止时间：{{ notice_data.notice.noticeEndtime }}</view>
+      </view>
+    </view>
+  </view>
+</view>

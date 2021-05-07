@@ -1,0 +1,46 @@
+/* pages/add_todo/add_todo.wxss */
+page{
+  background-color: #f2f2f2;
+}
+.page-body{
+
+  padding: 1em;
+}
+
+.textarea-wrp {
+  padding: 0 25rpx;
+  background-color: #fff;
+}
+
+.page-section{
+  width: 100%;
+  margin-bottom: 60rpx;
+}
+
+.page-section:last-child{
+  margin-bottom: 0;
+}
+
+.page-section-title{
+  font-size: 30rpx;
+  color: #616161;
+  margin-bottom: 10rpx;
+  padding-right: 30rpx;
+}
+
+input{
+  height: 2em;
+}
+
+picker{
+  padding: 0.5em;
+  background-color: #fff;
+}
+
+.textarea-wrp, picker{
+  border-radius: .35rem;
+}
+
+button{
+  background-color: white;
+}
