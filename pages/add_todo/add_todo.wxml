@@ -4,14 +4,15 @@
   <view class="page-section">
     <view class="page-section-title">待办标题</view>
     <view class="textarea-wrp">
-      <input placeholder="请填写待办标题" placeholder-class='txt'/>
+      <input placeholder="请填写待办标题" placeholder-class='txt' bindinput="getTitle" />
     </view>
   </view>
 
   <view class="page-section">
     <view class="page-section-title">待办内容</view>
     <view class="textarea-wrp">
-      <textarea placeholder="请填写待办内容" auto-focus="true" bindblur="bindTextAreaBlur" style="height: 10em" />
+      <textarea placeholder="请填写待办内容" auto-focus="true" bindblur="bindTextAreaBlur" style="height: 10em"
+        bindinput="getContent" />
       </view>
   </view>
 

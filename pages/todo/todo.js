@@ -72,9 +72,55 @@ Page({
     }
   },
 
-  query: function () {
-    console.log("levelIndex:", this.data.levelIndex)
-    console.log("finishIndex", this.data.finishIndex);
+  getTodos: function(userId, isFinished, level){
+    const that = this
+    wx.request({
+      url: app.globalData.hostUrl + '/todo/getTodos',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      data: {
+        userId: userId,
+        isFinished: isFinished,
+        level: level
+      },
+      success: function (res) {
+        if (res.data.code === "2006") {
+          that.setData({
+            response: res.data
+          })
+        } else if(res.data.code === "2007"){
+          that.setData({
+            response:""
+          })
+          wx.showToast({
+            title: '无所查询数据',
+            icon: 'error',
+            duration: 2000
+          })
+        }
+      },
+      fail:function(){
+        wx.showToast({
+          title: '网络连接错误',
+          icon: 'error',
+          duration: 2000
+        })
+      }
+    }) 
+  },
+
+  query: function(){
+    this.getTodos(app.globalData.userId, this.data.finishIndex, this.data.levelIndex)
+  },
+
+  readTodo: function(e){
+    // 设置缓冲区，将通知id存入缓冲区，以便到达新页面进行新的请求加载页面详情
+    wx.setStorageSync('todoId', e.currentTarget.dataset.id)
+    wx.navigateTo({
+      url: '/pages/todo_detail/todo_detail',
+    })
   },
 
   add_todo: function () {
@@ -114,7 +160,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log("onshow");
+    this.setData({
+      response:""
+    })
+    this.getTodos(app.globalData.userId, this.data.finishIndex, this.data.levelIndex)
   },
 
   /**

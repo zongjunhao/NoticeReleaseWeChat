@@ -25,10 +25,10 @@
 </view>
 <view class="card">
   <view class="card-body" wx:for="{{response.data}}" wx:for-item="todo" wx:key="todoId">
-    <view class="notice-card level{{todo.todoLevel}} {{todo.todoIsFinished === 1 ? 'level0' : ''}}">
-      <view class="todo_title">{{ todo.todoTitle }}</view>
-      <view class="todo_content">{{ todo.todoContent }}</view>
-      <view class="phone">截止时间：{{ todo.todoEndtime }}</view>
+    <view class="notice-card level{{todo.todoLevel}} {{todo.todoIsFinished === 1 ? 'level0' : ''}}" bindtap="readTodo" data-id="{{todo.todoId}}">
+      <view class="title">{{ todo.todoTitle }}</view>
+      <view class="content">{{ todo.todoContent }}</view>
+      <view class="endtime">截止时间：{{ todo.todoEndtime }}</view>
     </view>
   </view>
 </view>

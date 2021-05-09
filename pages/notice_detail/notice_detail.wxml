@@ -27,7 +27,7 @@
 
 <view class="bottom">
   <view>截止日期：{{response.notice.noticeEndtime}}</view>
-  <button class="finish" size="mini" plain="true" disabled="{{response.isFinished === 1}}">
+  <button class="finish" size="mini" plain="true" disabled="{{response.isFinished === 1}}" bindtap="finishNotice">
     {{response.isFinished === 0 ? '' : '已'}}完成
   </button>
 </view>

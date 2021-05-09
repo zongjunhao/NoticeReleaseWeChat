@@ -22,7 +22,7 @@
 </view>
 <view class="card">
   <view class="card-body" wx:for="{{response.data}}" wx:for-item="notice_data" wx:key="notice">
-    <view class="notice-card level{{notice_data.notice.noticeLevel}} {{notice.noticeIsFinished === 1 ? 'level0' : ''}}"  bindtap="readNotice" data-id="{{notice_data.notice.noticeId}}">
+    <view class="notice-card level{{notice_data.notice.noticeLevel}} {{notice_data.isFinished === 1 ? 'level0' : ''}}"  bindtap="readNotice" data-id="{{notice_data.notice.noticeId}}">
       <view class="title">{{ notice_data.notice.noticeTitle }}</view>
       <view class="content">{{ notice_data.notice.noticeContent }}</view>
       <view class="card_bottom">

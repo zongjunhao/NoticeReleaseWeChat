@@ -1,7 +1,10 @@
 /* pages/todo/todo.wxss */
-.title{
-    font-size: 40rpx;
-}
+.title {
+    font-size: 1.05em;
+    font-weight: normal;
+    color: #000000;
+    margin-bottom: 20rpx;
+  }
 .top, .head{
     display: flex;
     justify-content: space-between;

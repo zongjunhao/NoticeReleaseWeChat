@@ -52,7 +52,7 @@ Page({
           password: this.data.password
         },
         success: function (res) {
-          if (res.data.code === "4000") {
+          if (res.data.code === "4000" || res.data.code === "4007") {
             app.globalData.userId = res.data.data.userId
             wx.showToast({
               title: '登录成功',
