@@ -1,2 +1,70 @@
-<!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<!--my.wxml-->
+<view class="my-container">
+  <view class="userinfo">
+    <block wx:if="{{canIUseOpenData}}" calss="userinfo-opendata">
+      <view class="userinfo-avatar" bindtap="bindViewTap">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <open-data type="userNickName"></open-data>
+    </block>
+    <block wx:elif="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+
+
+  <view class="info">
+    <view class="form-group">
+      <view class="attribute-name">姓名</view>
+      <view class="attribute-content">{{response.data.userName}}</view>
+    </view>
+    <view class="form-group">
+      <view class="attribute-name">性别</view>
+      <view class="attribute-content">{{response.data.userGender}}</view>
+    </view>
+    <view class="form-group">
+      <view class="attribute-name">学工号</view>
+      <view class="attribute-content">{{response.data.userAccount}}</view>
+    </view>
+    <view class="form-group">
+      <view class="attribute-name">密码</view>
+      <view class="attribute-content">
+        <view>************</view>
+        <button size="mini" bindtap="changePassword" style="font-weight: normal;">修改</button>
+      </view>
+      <modal hidden="{{hiddenPasswordModal}}" title="请输入密码" confirm-text="修改" cancel-text="取消"
+        bindcancel="passwordCancel" bindconfirm="passwordConfirm">
+        <input password="true" placeholder="请输入密码" bindinput="getPassword"></input>
+        <input password="true" placeholder="确认密码" bindinput="getConfirmPassword"></input>
+      </modal>
+    </view>
+    <view class="form-group">
+      <view class="attribute-name">联系电话</view>
+      <view class="attribute-content">
+        <view>{{response.data.userPhone}}</view>
+        <button size="mini" bindtap="changePhone" style="font-weight: normal;">修改</button>
+      </view>
+      <modal hidden="{{hiddenPhoneModal}}" title="请输入联系电话" confirm-text="修改" cancel-text="取消" bindcancel="phoneCancel"
+        bindconfirm="phoneConfirm">
+        <input type="text" placeholder="请输入联系电话" bindinput="getPhone"></input>
+      </modal>
+    </view>
+    <view class="form-group">
+      <view class="attribute-name">邮箱</view>
+      <view class="attribute-content">
+        <view>{{response.data.userEmail}}</view>
+        <button size="mini" bindtap="changeMail" style="font-weight: normal;">修改</button>
+      </view>
+      <modal hidden="{{hiddenMailModal}}" title="请输入邮箱" confirm-text="修改" cancel-text="取消" bindcancel="mailCancel"
+        bindconfirm="mailConfirm">
+        <input type="text" placeholder="请输入联系电话" bindinput="getMail"></input>
+      </modal>
+    </view>
+  </view>
+</view>
