@@ -63,7 +63,7 @@
       </view>
       <modal hidden="{{hiddenMailModal}}" title="请输入邮箱" confirm-text="修改" cancel-text="取消" bindcancel="mailCancel"
         bindconfirm="mailConfirm">
-        <input type="text" placeholder="请输入联系电话" bindinput="getMail"></input>
+        <input type="text" placeholder="请输入邮箱" bindinput="getMail"></input>
       </modal>
     </view>
   </view>

@@ -31,14 +31,14 @@ Page({
   },
 
   bindLevelChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+    console.log('level', e.detail.value)
     this.setData({
       levelIndex: e.detail.value
     })
   },
 
   checkInput: function (title, content) {
-    if (title === "") {
+    if (title === "" || title == null) {
       wx.showToast({
         title: '请输入待办标题',
         icon: 'error',
@@ -46,7 +46,7 @@ Page({
       })
       return false;
     }
-    if (content === "") {
+    if (content === "" || title == null) {
       wx.showToast({
         title: '请输入待办内容',
         icon: 'error',
@@ -63,6 +63,8 @@ Page({
     console.log(this.data.content);
     console.log(this.data.date);
     console.log(this.data.levelIndex);
+    let level = parseInt(this.data.levelIndex) + 1
+    console.log("level:" + level);
     if (this.checkInput(this.data.title, this.data.content)) {
       wx.request({
         url: app.globalData.hostUrl + '/todo/addTodo',
@@ -73,7 +75,7 @@ Page({
         data: {
           title: this.data.title,
           content: this.data.content,
-          level: this.data.levelIndex,
+          level: level,
           endTime: this.data.date,
           userId: app.globalData.userId
         },
@@ -88,8 +90,8 @@ Page({
               wx.navigateBack({
                 delta: 1,
               })
-             }, 1000) 
-          }else{
+            }, 1000)
+          } else {
             wx.showToast({
               title: '网络异常，请重试',
               icon: 'none',
