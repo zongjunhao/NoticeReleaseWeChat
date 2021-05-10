@@ -1,33 +1,82 @@
 // pages/todo_detail/todo_detail.js
+let app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    response: {
-      "data": {
-           "todoId": 1,
-           "todoTitle": "修改测试",
-           "todoContent": "修改测试",
-           "todoLevel": 1,
-           "todoIsFinished": 1,
-           "todoUserId": 1,
-           "todoEndtime": "2021-04-19",
-           "todoFinishtime": "2021-04-12 21:29:51",
-           "todoAddtime": "2021-04-06 21:40:19",
-           "todoUpdatetime": "2021-04-12 21:29:51"
+    response: ""
+  },
+
+  finishTodo: function () {
+    wx.request({
+      url: app.globalData.hostUrl + '/todo/finishTodo',
+      method: "POST",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
       },
-      "code": "2006",
-      "desc": "数据库查找成功"
- }
+      data: {
+        todoId: wx.getStorageSync('todoId')
+      },
+      success: function (res) {
+        if (res.data.code === "2002") {
+          wx.showToast({
+            title: '已完成',
+            icon: 'success',
+            duration: 1000
+          })
+          setTimeout(function () {
+            wx.navigateBack({
+              delta: 1,
+            })
+           }, 1000) 
+        } else {
+          wx.showToast({
+            title: '网络异常，请重试',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: '网络连接错误',
+          icon: 'error',
+          duration: 2000
+        })
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const that = this
+    wx.request({
+      url: app.globalData.hostUrl + '/todo/getTodo',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      data: {
+        todoId: wx.getStorageSync('todoId')
+      },
+      success: function (res) {
+        console.log(res);
+        that.setData({
+          response: res.data
+        })
+      },
+      fail: function () {
+        wx.showToast({
+          title: '网络连接错误',
+          icon: 'error',
+          duration: 2000
+        })
+      }
+    })
   },
 
   /**

@@ -44,6 +44,23 @@ Page({
   passwordConfirm: function () {
     console.log(this.data.password);
     console.log(this.data.confirmPassword);
+    var passwordRegExp = new RegExp("^.{6,}$")
+    if (this.data.password !== this.data.confirmPassword){
+      wx.showToast({
+        title: '两次输入密码不一致，请重新输入',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
+    if (!passwordRegExp.test(this.data.password)) {
+      wx.showToast({
+        title: '请输入六位以上密码',
+        icon: 'none',
+        duration: 2000
+      })
+      return 
+    }
     this.setData({
       hiddenPasswordModal: true
     })
@@ -68,6 +85,15 @@ Page({
   },
   phoneConfirm: function () {
     console.log(this.data.phone);
+    var phoneRegExp = new RegExp("^(13[0-9]|14[5|7]|15[0|1|2|3|4|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\\d{8}$")
+    if (!phoneRegExp.test(this.data.phone)) {
+      wx.showToast({
+        title: '请输入正确的手机号码',
+        icon: 'none',
+        duration: 2000
+      })
+      return 
+    }
     this.setData({
       hiddenPhoneModal: true
     })
@@ -92,6 +118,15 @@ Page({
   },
   mailConfirm: function () {
     console.log(this.data.mail);
+    var mailRegExp = new RegExp("^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$")
+    if (!mailRegExp.test(this.data.mail)) {
+      wx.showToast({
+        title: '请输入正确的邮箱',
+        icon: 'none',
+        duration: 2000
+      })
+      return 
+    }
     this.setData({
       hiddenMailModal: true
     })
@@ -149,7 +184,7 @@ Page({
             duration: 1000
           })
           setTimeout(function () {
-            // that.getUser
+            that.getUser()
           }, 1000)
         } else {
           wx.showToast({
